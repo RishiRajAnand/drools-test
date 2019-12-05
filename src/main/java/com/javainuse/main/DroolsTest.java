@@ -36,14 +36,23 @@ public class DroolsTest {
 
 		WorkingMemory workingMemory = ruleBase.newStatefulSession();
 
-		Product product = new Product();
-		product.setType("diamond");
-
-		workingMemory.insert(product);
+		Product diamond = new Product();
+		diamond.setType("diamond");
+		Product gold = new Product();
+		gold.setType("gold");
+		Product silver = new Product();
+		silver.setType("silver");
+		workingMemory.insert(diamond);
+		workingMemory.insert(gold);
+		workingMemory.insert(silver);
 		workingMemory.fireAllRules();
 
-		System.out.println("The discount for the product " + product.getType()
-				+ " is " + product.getDiscount());
+		System.out.println("The discount for the product " + diamond.getType()
+				+ " is " + diamond.getDiscount());
+		System.out.println("The discount for the product " + gold.getType()
+				+ " is " + gold.getDiscount());
+		System.out.println("The discount for the product " + silver.getType()
+				+ " is " + silver.getDiscount());
 	}
 
 }

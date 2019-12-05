@@ -14,3 +14,9 @@ rule "Offer for Gold"
 	then
 		productObject.setDiscount(25);
 	end
+rule "Offer for Silver"
+	when
+		productObject: Product(type=="silver")
+	then
+		productObject.setDiscount(30);
+	end
