@@ -35,4 +35,14 @@ public class Util {
         org.drools.core.rule.Package rulesPackage = packageBuilder.getPackage();
         return rulesPackage;
     }
+    public Product execute(Product product) {
+        RuleBase ruleBase = RuleBaseFactory.newRuleBase();
+        ruleBase.addPackage(aPackage);
+        WorkingMemory workingMemory = ruleBase.newStatefulSession();
+
+        workingMemory.insert(product);
+        workingMemory.fireAllRules();
+
+        return product;
+    }
 }
