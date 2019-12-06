@@ -15,25 +15,16 @@ import com.javainuse.model.Product;
 
 public class DroolsTest {
 
-	public static void main(String[] args) throws DroolsParserException,
-			IOException {
+	public static void main(String[] args) {
 		DroolsTest droolsTest = new DroolsTest();
 		droolsTest.executeDrools();
 	}
 
-	public void executeDrools() throws DroolsParserException, IOException {
+	public void executeDrools() {
 
-		PackageBuilder packageBuilder = new PackageBuilder();
-
-		String ruleFile = "/com/rule/Rules.drl";
-		InputStream resourceAsStream = getClass().getResourceAsStream(ruleFile);
-
-		Reader reader = new InputStreamReader(resourceAsStream);
-		packageBuilder.addPackageFromDrl(reader);
-		org.drools.core.rule.Package rulesPackage = packageBuilder.getPackage();
+		Util u = new Util();
 		RuleBase ruleBase = RuleBaseFactory.newRuleBase();
-		ruleBase.addPackage(rulesPackage);
-
+		ruleBase.addPackage(u.aPackage);
 		WorkingMemory workingMemory = ruleBase.newStatefulSession();
 
 		Product product = new Product();
